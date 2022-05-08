@@ -39,7 +39,7 @@ def user_options():
     Gives users multiple options to choose from.
     '''
 
-    print('\n1. View Balance\n2. Deposte Money\n3. Withdraw Money')
+    print('\n1. View Balance\n2. Deposit Money\n3. Withdraw Money')
     choose = int(input('Please choose one of the following options: '))
 
     if choose == 1:
@@ -48,6 +48,21 @@ def user_options():
         print('User wants to deposit their money in ')
     elif choose == 3:
         print('User wants to withdraw thier money')
+    else:
+            validate_data(choose)
+
+
+def validate_data(user_typed):
+    '''
+    Instead of breaking a program, this raises an error if the user doesn't follow along.
+    '''
+    try:
+        raise ValueError(
+            f'You must select one of the three given values but you typed {user_typed}')
+    except ValueError as err:
+        print(f"Invalid data: {err}, please try again.\n")
 
 
 get_user_details()
+
+

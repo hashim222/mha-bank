@@ -1,6 +1,7 @@
 import gspread
 from google.oauth2.service_account import Credentials
 import pyfiglet
+from time import sleep
 
 
 SCOPE = [
@@ -29,10 +30,24 @@ def get_user_details():
 
     input('Press any BUTTON to start...')
     print('=========================================================================================')
-    print('Choose one of these from the list: ')
-    print('1. View Balance')
-    print('2. Deposte Money')
-    print('3. Withdraw Money')
+    sleep(0.5)
+    user_options()
+
+
+def user_options():
+    '''
+    Gives users multiple options to choose from.
+    '''
+
+    print('\n1. View Balance\n2. Deposte Money\n3. Withdraw Money')
+    choose = int(input('Please choose one of the following options: '))
+
+    if choose == 1:
+        print('User wants to see their balance')
+    elif choose == 2:
+        print('User wants to deposit their money in ')
+    elif choose == 3:
+        print('User wants to withdraw thier money')
 
 
 get_user_details()

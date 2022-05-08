@@ -27,5 +27,12 @@ def get_user_details():
     print(BANK_LOGO)
     print('Hello and welcome to mha bank.\n')
 
+    input('Press any BUTTON to start...')
+    print('=========================================================================================')
+    print('Choose one of these from the list: ')
+    print('1. View Balance')
+    print('2. Deposte Money')
+    print('3. Withdraw Money')
+
 
 get_user_details()

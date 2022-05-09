@@ -32,7 +32,6 @@ def get_user_details():
     print('=========================================================================================')
     sleep(0.5)
     main()
-    sleep(0.5)
 
 
 def validate_data(user_typed):
@@ -42,7 +41,7 @@ def validate_data(user_typed):
     try:
         if int(user_typed):
             raise ValueError(
-                f'The typed value does not match with the given values.')
+                'The typed value does not match with the given values.')
     except ValueError as err:
         print(f"Invalid data: {err} please try again. \n")
 
@@ -50,20 +49,32 @@ def validate_data(user_typed):
 balance = 0
 
 
-def view_balance():
-    '''
-    Shows users balance
-    '''
-    print(f'your balance is £{balance}')
-
-
 def deposit_money():
     '''
-    User inputs their money in.
+    Users inputs for deposit amount
     '''
-    user_deposit_money = int(
+    user_deposit_money = float(
         input('how much would you like to deposit money? £'))
     print(f'You deposit £{user_deposit_money} in your bank acc')
+    return user_deposit_money
+
+
+def withdraw_money(amount):
+    '''
+    Users inputs for withdrawl amount.
+    '''
+    user_withdraw_money = float(
+        input('how much would you like to withdraw? £'))
+    updated_bal = amount - user_withdraw_money
+    print(f'you have taken £{user_withdraw_money} from your bank acc')
+    return updated_bal
+
+
+def view_balance(amount):
+    '''
+    Shows users to their total balance
+    '''
+    print(f'your updated balance is £{amount}')
 
 
 def main():
@@ -73,18 +84,15 @@ def main():
     '''
     while True:
         print('Please choose one of the following options: ')
-        print('\n1. View Balance\n2. Deposit Money\n3. Withdraw Money')
+        print('\n1. Deposit Money\n2. Withdraw Money\n3. View Balance\n')
         choose = input('Type here: ')
 
         if choose == '1':
-            view_balance()
-            break
+            added_amount = deposit_money()
         elif choose == '2':
-            deposit_money()
-            break
+            removed_amount = withdraw_money(added_amount)
         elif choose == '3':
-            print('User wants to withdraw thier money')
-            break
+            view_balance(removed_amount)
         elif choose == '':
             print('please type a number')
         else:

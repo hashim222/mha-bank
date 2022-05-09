@@ -74,11 +74,11 @@ def main():
     User multiple choices inside.
     Runs multiple function.
     '''
+    added_amount = deposit_money()
+    removed_amount = withdraw_money(added_amount)
+    total_balance = view_balance(removed_amount)
 
     while True:
-        added_amount = deposit_money()
-        removed_amount = withdraw_money(added_amount)
-        total_balance = view_balance(removed_amount)
         sleep(1.5)
         print('Please choose one of the following options: ')
         print('\n1. Deposit Money\n2. Withdraw Money\n3. View Balance\n')

@@ -31,28 +31,8 @@ def get_user_details():
     input('Press any BUTTON to start...')
     print('=========================================================================================')
     sleep(0.5)
-    user_options()
-
-
-def user_options():
-    '''
-    Gives users multiple options to choose from.
-    '''
-    while True:
-        print('Please choose one of the following options: ')
-        print('\n1. View Balance\n2. Deposit Money\n3. Withdraw Money')
-        choose = input('Type here: ')
-
-        if choose == '1':
-            print('User wants to see their balance')
-        elif choose == '2':
-            print('User wants to deposit their money in ')
-        elif choose == '3':
-            print('User wants to withdraw thier money')
-        elif choose == '':
-            print('please type a number')
-        else:
-            validate_data(choose)
+    main()
+    sleep(0.5)
 
 
 def validate_data(user_typed):
@@ -62,9 +42,53 @@ def validate_data(user_typed):
     try:
         if int(user_typed):
             raise ValueError(
-                f'The typed value does not match with the given values. ')
+                f'The typed value does not match with the given values.')
     except ValueError as err:
         print(f"Invalid data: {err} please try again. \n")
+
+
+balance = 0
+
+
+def view_balance():
+    '''
+    Shows users balance
+    '''
+    print(f'your balance is £{balance}')
+
+
+def deposit_money():
+    '''
+    User inputs their money in.
+    '''
+    user_deposit_money = int(
+        input('how much would you like to deposit money? £'))
+    print(f'You deposit £{user_deposit_money} in your bank acc')
+
+
+def main():
+    '''
+    User multiple choices inside.
+    Runs multiple function.
+    '''
+    while True:
+        print('Please choose one of the following options: ')
+        print('\n1. View Balance\n2. Deposit Money\n3. Withdraw Money')
+        choose = input('Type here: ')
+
+        if choose == '1':
+            view_balance()
+            break
+        elif choose == '2':
+            deposit_money()
+            break
+        elif choose == '3':
+            print('User wants to withdraw thier money')
+            break
+        elif choose == '':
+            print('please type a number')
+        else:
+            validate_data(choose)
 
 
 get_user_details()

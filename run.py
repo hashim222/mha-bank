@@ -4,7 +4,6 @@ from google.oauth2.service_account import Credentials
 import pyfiglet
 
 
-
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
     "https://www.googleapis.com/auth/drive.file",
@@ -52,13 +51,13 @@ def enter_username():
     while True:
         print('Please keep the letter below 10 and above 5')
         username = input('Create your username please: ')
-        SHEET.worksheet('user_info').update('A4', username)
         if len(username) > 10:
             print('The number of letters should not exceed 10. Please try again')
             continue
         elif len(username) < 5:
             print('A minimum of five letters is required. Please try again')
             continue
+        SHEET.worksheet('user_info').update('A4', username)
         return username
 
 

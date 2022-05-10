@@ -31,7 +31,6 @@ def get_user_details():
     main()
 
 
-
 def validate_data(user_typed):
     '''
     Instead of breaking a program, this raises an error if the user doesn't follow along.
@@ -42,7 +41,8 @@ def validate_data(user_typed):
                 'The typed value does not match with the given values.')
     except ValueError as err:
         print(f"Invalid data: {err} please try again. \n")
-        
+
+
 def enter_username():
     '''
     Stores username
@@ -57,31 +57,40 @@ def enter_username():
             print('A minimum of five letters is required. Please try again')
             continue
         return username
+
+
 def deposit_money():
     '''
     Users inputs for deposit amount
     '''
-    user_deposit_money = float(input('how much would you like to deposit money? £'))
+    user_deposit_money = float(
+        input('how much would you like to deposit money? £'))
     # SHEET.worksheet('user_info').append_row(user_deposit_money)
     print(f'You deposit £{user_deposit_money} in your bank acc')
     return user_deposit_money
+
 
 def withdraw_money(amount):
     '''
     Users inputs for withdrawl amount.
     '''
-    user_withdraw_money = float(input('how much would you like to withdraw? £'))
-    # SHEET.worksheet('user_info').append_row(user_withdraw_money)    
+    user_withdraw_money = float(
+        input('how much would you like to withdraw? £'))
+    # SHEET.worksheet('user_info').append_row(user_withdraw_money)
     updated_bal = amount - user_withdraw_money
     print(f'you have taken £{user_withdraw_money} from your bank acc')
-    return updated_bal
-def view_balance(amount):
+    return user_withdraw_money
+
+
+def view_balance(depo_amount, amount):
     '''
     Shows users to their total balance
     '''
-    print(f'your updated balance is £{amount}')
+    get_total = depo_amount - amount
+    print(f'your updated balance is £{get_total}')
     # SHEET.worksheet('user_info').append_row(amount)
-    return amount
+    return get_total
+
 
 def main():
     '''
@@ -91,17 +100,14 @@ def main():
     usr_name = enter_username()
     added_amount = deposit_money()
     removed_amount = withdraw_money(added_amount)
-    total_balance = view_balance(removed_amount)
-    
-    add_total = [usr_name, added_amount, removed_amount, total_balance]
+    total_balance = view_balance(added_amount, removed_amount)
 
+    add_total = [usr_name, added_amount, removed_amount, total_balance]
 
     SHEET.worksheet('user_info').append_row(add_total)
 
 
-
-
-    #total_balance =
+    # total_balance =
     # while True:
     #     sleep(1.5)
     #     print('Please choose one of the following options: ')
@@ -120,7 +126,5 @@ def main():
     #     elif choose == '':
     #         print('please type a number')
     #     else:
-    #         validate_data(choose)      
-
-
+    #         validate_data(choose)
 get_user_details()

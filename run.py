@@ -1,7 +1,7 @@
-from time import sleep
 import gspread
 from google.oauth2.service_account import Credentials
 import pyfiglet
+from time import sleep
 
 
 SCOPE = [
@@ -28,8 +28,8 @@ def get_user_details():
     input('Press any BUTTON to start...')
     print('=========================================================================================')
     sleep(0.5)
-    enter_username()
     main()
+
 
 
 def validate_data(user_typed):
@@ -42,8 +42,7 @@ def validate_data(user_typed):
                 'The typed value does not match with the given values.')
     except ValueError as err:
         print(f"Invalid data: {err} please try again. \n")
-
-
+        
 def enter_username():
     '''
     Stores username
@@ -57,51 +56,52 @@ def enter_username():
         elif len(username) < 5:
             print('A minimum of five letters is required. Please try again')
             continue
-        SHEET.worksheet('user_info').update('A4', username)
         return username
-
-
 def deposit_money():
     '''
     Users inputs for deposit amount
     '''
-    user_deposit_money = float(
-        input('how much would you like to deposit money? £'))
-    SHEET.worksheet('user_info').update_acell('B4', user_deposit_money)
+    user_deposit_money = float(input('how much would you like to deposit money? £'))
+    # SHEET.worksheet('user_info').append_row(user_deposit_money)
     print(f'You deposit £{user_deposit_money} in your bank acc')
     return user_deposit_money
-
 
 def withdraw_money(amount):
     '''
     Users inputs for withdrawl amount.
     '''
-    user_withdraw_money = float(
-        input('how much would you like to withdraw? £'))
-    SHEET.worksheet('user_info').update_acell('C4', user_withdraw_money)
+    user_withdraw_money = float(input('how much would you like to withdraw? £'))
+    # SHEET.worksheet('user_info').append_row(user_withdraw_money)    
     updated_bal = amount - user_withdraw_money
     print(f'you have taken £{user_withdraw_money} from your bank acc')
     return updated_bal
-
-
 def view_balance(amount):
     '''
     Shows users to their total balance
     '''
     print(f'your updated balance is £{amount}')
-    SHEET.worksheet('user_info').update_acell('D4', amount)
+    # SHEET.worksheet('user_info').append_row(amount)
     return amount
-
 
 def main():
     '''
     User multiple choices inside.
     Runs multiple function.
     '''
+    usr_name = enter_username()
     added_amount = deposit_money()
     removed_amount = withdraw_money(added_amount)
-    view_balance(removed_amount)
-    # total_balance =
+    total_balance = view_balance(removed_amount)
+    
+    add_total = [usr_name, added_amount, removed_amount, total_balance]
+
+
+    SHEET.worksheet('user_info').append_row(add_total)
+
+
+
+
+    #total_balance =
     # while True:
     #     sleep(1.5)
     #     print('Please choose one of the following options: ')
@@ -120,7 +120,7 @@ def main():
     #     elif choose == '':
     #         print('please type a number')
     #     else:
-    #         validate_data(choose)
+    #         validate_data(choose)      
 
 
 get_user_details()

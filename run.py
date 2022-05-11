@@ -48,8 +48,9 @@ def enter_username():
     Stores username
     '''
     while True:
-        print('Please keep the letter below 10 and above 5')
-        username = input("Create your username here, or type in your username if you're already a member: \n")
+        username = input(
+            "Create your username here, or enter your existing username if you are already a member.\nYour letter should be between 5 and 10. \n")
+
         if len(username) > 10:
             print('The number of letters should not exceed 10. Please try again')
             continue
@@ -64,8 +65,12 @@ def deposit_money():
     Users inputs for deposit amount
     '''
     deposit_amount = float(
-        input('What amount would you like to deposit?\n£'))
-    print(f'Your bank account has been credited with £{deposit_amount}')
+        input('How much would you like to deposit?\n£'))
+    print('Deposit is pending....')
+    sleep(1.2)
+    print('Approved✅')
+    print(f'Your bank account has been credited with £{deposit_amount}\n\n')
+
     return deposit_amount
 
 
@@ -77,20 +82,27 @@ def withdraw_money():
         'Do you wish to withdraw money? y/n\n').lower()
     if user_choice_of_withdraw == 'y' or user_choice_of_withdraw == 'yes':
         withdrawal_amount = float(
-            input('What amount would you like to withdraw?\n£'))
-        print(f'You have taken £{withdrawal_amount} from your bank account')
+            input('How much would you like to withdraw?\n£'))
+        print('Withdrawal request processing...')
+        sleep(1.2)
+        print('Approved✅')
+        print(f'You have taken £{withdrawal_amount} from your bank account\n')
     elif user_choice_of_withdraw == 'n' or user_choice_of_withdraw == 'no':
         withdrawal_amount = float(0)
-        print('No money was withdrawn from your account')
+        print('processing...')
+        sleep(1.2)
+        print('No money was withdrawn from your account\n')
     return withdrawal_amount
 
-def view_balance(depo_amount, amount):
+
+def view_balance(depo_amount, withd_amount):
     '''
     Shows users to their total balance
     '''
-    get_total = depo_amount - amount
-    print(f'You have an updated balance of £{get_total}')
-    return get_total
+    get_total_amount = depo_amount - withd_amount
+    sleep(1.2)
+    print(f'You have an updated balance of £{get_total_amount}\n')
+    return get_total_amount
 
 
 def main():
@@ -98,15 +110,17 @@ def main():
     User multiple choices inside.
     Runs multiple function.
     '''
-    usr_name = enter_username()
+    user = enter_username()
     added_amount = deposit_money()
     removed_amount = withdraw_money()
     total_balance = view_balance(added_amount, removed_amount)
 
-    add_total = [usr_name, added_amount, removed_amount, total_balance]
+    add_total = [user, added_amount, removed_amount, total_balance]
 
     SHEET.worksheet('user_info').append_row(add_total)
 
+    print(
+        f'User Information:\nUsername - {user}\nTotal Balance - £{total_balance}')
     # total_balance =
     # while True:
     #     sleep(1.5)

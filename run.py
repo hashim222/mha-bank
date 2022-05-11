@@ -81,7 +81,7 @@ def deposit_money():
         return deposit_amount
 
 
-def withdraw_money():
+def withdraw_money(amount):
     '''
     Users inputs for withdrawl amount.
     '''
@@ -89,8 +89,21 @@ def withdraw_money():
         user_choice_of_withdraw = input(
             'Do you wish to withdraw money? y/n\n').lower()
         if user_choice_of_withdraw == 'y' or user_choice_of_withdraw == 'yes':
-            withdrawal_amount = float(
-                input('\nHow much would you like to withdraw?\n£'))
+            withdrawal_amount = input(
+                '\nHow much would you like to withdraw?\n£')
+            if withdrawal_amount.isdigit():
+                withdrawal_amount = float(withdrawal_amount)
+            else:
+                print('\nPlease enter a number\n')
+                continue
+
+            if withdrawal_amount > amount:
+                sleep(1.2)
+                print('\nPayment Declined❌')
+                print(
+                    f'you have insufficient balance of £{amount} please withdraw £{amount} or less please\n')
+                continue
+
             print('\nWithdrawal request processing...')
             sleep(1.5)
             print('Approved✅\n')
@@ -112,7 +125,6 @@ def view_balance(depo_amount, withd_amount):
     Shows users to their total balance
     '''
     get_total_amount = depo_amount - withd_amount
-    sleep(1.2)
     print(f'You have an updated balance of £{get_total_amount}\n')
     return get_total_amount
 
@@ -124,13 +136,14 @@ def main():
     '''
     user = enter_username()
     added_amount = deposit_money()
-    removed_amount = withdraw_money()
+    removed_amount = withdraw_money(added_amount)
     total_balance = view_balance(added_amount, removed_amount)
 
     add_total = [user, added_amount, removed_amount, total_balance]
 
     SHEET.worksheet('user_info').append_row(add_total)
 
+    sleep(1.2)
     print(
         f'User Information:\nUsername - {user}\nBalance - £{total_balance}')
     # total_balance =

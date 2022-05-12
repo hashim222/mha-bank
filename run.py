@@ -35,6 +35,7 @@ def validate_data(user_typed):
     '''
     Instead of breaking a program, this raises an error if the user doesn't follow along.
     '''
+
     try:
         if int(user_typed):
             raise ValueError(
@@ -47,6 +48,7 @@ def enter_username():
     '''
     Stores username information
     '''
+
     while True:
         username = input(
             "Create your username here, or enter your existing username if you are already a member.\nYour character should be between 5 and 10. \n").lower()
@@ -66,6 +68,7 @@ def deposit_money():
     '''
     Users inputs for deposit amount
     '''
+
     while True:
         deposit_amount = input('How much would you like to deposit?\n£')
         if deposit_amount.isdigit():
@@ -73,6 +76,7 @@ def deposit_money():
             print('\nProcessing deposit....')
             sleep(1.5)
             print('Approved✅\n')
+            sleep(1.2)
             print(
                 f'Your bank account has been credited with £{deposit_amount}\n')
         else:
@@ -85,6 +89,7 @@ def withdraw_money(amount):
     '''
     Users inputs for withdrawl amount.
     '''
+
     while True:
         user_choice_of_withdraw = input(
             'Do you wish to withdraw money? y/n\n').lower()
@@ -100,6 +105,7 @@ def withdraw_money(amount):
             if withdrawal_amount > amount:
                 sleep(1.2)
                 print('\nPayment Declined❌')
+                sleep(1.2)
                 print(
                     f'you have insufficient balance of £{amount} please withdraw £{amount} or less please\n')
                 continue
@@ -107,6 +113,7 @@ def withdraw_money(amount):
             print('\nWithdrawal request processing...')
             sleep(1.5)
             print('Approved✅\n')
+            sleep(1.2)
             print(
                 f'You have taken £{withdrawal_amount} from your bank account\n')
         elif user_choice_of_withdraw == 'n' or user_choice_of_withdraw == 'no':
@@ -124,6 +131,7 @@ def view_balance(depo_amount, withd_amount):
     '''
     Shows users to their total balance
     '''
+
     get_total_amount = depo_amount - withd_amount
     print(f'You have an updated balance of £{get_total_amount}\n')
     return get_total_amount
@@ -134,18 +142,33 @@ def main():
     User multiple choices inside.
     Runs multiple function.
     '''
+
     user = enter_username()
     added_amount = deposit_money()
     removed_amount = withdraw_money(added_amount)
     total_balance = view_balance(added_amount, removed_amount)
 
-    add_total = [user, added_amount, removed_amount, total_balance]
+    users = SHEET.worksheet("user_info").col_values(1)
+    for username in users:
+        # index = 1
+        if username == user:
+            print('user found', user)
+            # user_row = index
+            break
+        else:
+            append_row_in_spreadsheet = [
+                user, added_amount, removed_amount, total_balance]
+            SHEET.worksheet('user_info').append_row(append_row_in_spreadsheet)
+            # index =+ 1
 
-    SHEET.worksheet('user_info').append_row(add_total)
+    deposits = SHEET.worksheet("user_info").col_values(4)
+    user_deposit = deposits[1]
+    print(user_deposit)
 
-    sleep(1.2)
-    print(
-        f'User Information:\nUsername - {user}\nBalance - £{total_balance}')
+    # sleep(1.2)
+    # print(
+    #     f'User Information:\nUsername - {user}\nBalance - £{total_balance}')
+
     # total_balance =
     # while True:
     #     sleep(1.5)
@@ -166,6 +189,4 @@ def main():
     #         print('please type a number')
     #     else:
     #         validate_data(choose)
-
-
 get_user_details()

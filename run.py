@@ -59,9 +59,28 @@ def enter_username():
         elif len(username) < 5:
             print('\nA minimum of five character is required. Please try again.')
             continue
-        # elif username == 'exit':
-        #     print(f'Goodbye {username}')
         return username
+
+
+def check_user_existence(username):
+    '''
+    Checks if user exists in the spreadsheet
+    '''
+
+    user_info_ws = SHEET.worksheet("user_info")
+
+    existing_user = user_info_ws.find(username, in_column=1)
+    if existing_user:
+        last_cell = user_info_ws.findall(username, in_column=1)[-1]
+        balance = user_info_ws.row_values(last_cell.row)[-1]
+
+        print(
+            f"\nWelcome {username}.. Your current account balance is: {balance}")
+
+    else:
+        print(f"\nUsername not found\nCreating new user...")
+        sleep(1.2)
+        print(f'\nHello {username}, Thanx for joining MHA Bank')
 
 
 def deposit_money():
@@ -144,26 +163,27 @@ def main():
     '''
 
     user = enter_username()
+    check_user_existence(user)
     added_amount = deposit_money()
     removed_amount = withdraw_money(added_amount)
     total_balance = view_balance(added_amount, removed_amount)
 
-    users = SHEET.worksheet("user_info").col_values(1)
-    for username in users:
-        # index = 1
-        if username == user:
-            print('user found', user)
-            # user_row = index
-            break
-        else:
-            append_row_in_spreadsheet = [
-                user, added_amount, removed_amount, total_balance]
-            SHEET.worksheet('user_info').append_row(append_row_in_spreadsheet)
-            # index =+ 1
+    # users = SHEET.worksheet("user_info").col_values(1)
+    # for username in users:
+    #     # index = 1
+    #     if  username == user:
+    #         SHEET.worksheet('user_info').row_values(user)
+    #         print('user found', user)
+    #         # user_row = index
+    #         break
+    #     else:
+    #         append_row_in_spreadsheet = [user, added_amount, removed_amount, total_balance]
+    #         SHEET.worksheet('user_info').append_row(append_row_in_spreadsheet)
+    #         # index =+ 1
 
-    deposits = SHEET.worksheet("user_info").col_values(4)
-    user_deposit = deposits[1]
-    print(user_deposit)
+    # deposits = SHEET.worksheet("user_info").col_values(4)
+    # user_deposit = deposits[1]
+    # print(user_deposit)
 
     # sleep(1.2)
     # print(

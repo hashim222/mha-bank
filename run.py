@@ -46,7 +46,8 @@ def validate_data(user_typed):
 
 def enter_username():
     '''
-    Stores username information
+    Stores username here.
+    Checks that the amount of characters the user enters do not exceed or fall below the amount given.    
     '''
 
     while True:
@@ -64,7 +65,7 @@ def enter_username():
 
 def check_user_existence(username):
     '''
-    Checks if user exists in the spreadsheet
+    Checks if user exists in the spreadsheet or not
     '''
 
     user_info_ws = SHEET.worksheet("user_info")
@@ -73,25 +74,34 @@ def check_user_existence(username):
     if existing_user:
         last_cell = user_info_ws.findall(username, in_column=1)[-1]
         balance = user_info_ws.row_values(last_cell.row)[-1]
-
         print(
-            f"\nWelcome {username}.. Your current account balance is: {balance}")
+            f"\nWelcome {username}.. Your current account balance is: £{balance}")
 
     else:
         print(f"\nUsername not found\nCreating new user...")
         sleep(1.2)
         print(f'\nHello {username}, Thanx for joining MHA Bank')
+    return username
 
 
-def deposit_money():
+def deposit_money(user):
     '''
-    Users inputs for deposit amount
+    Adds user amount to the bank.
+    If user balance are found in the spreadsheet, the balance will be updated with the new balance.
     '''
 
     while True:
+
         deposit_amount = input('How much would you like to deposit?\n£')
         if deposit_amount.isdigit():
             deposit_amount = float(deposit_amount)
+            user_info_ws = SHEET.worksheet("user_info")
+
+            existing_user = user_info_ws.find(user, in_column=1)
+            if existing_user:
+                last_cell = user_info_ws.findall(user, in_column=1)[-1]
+                balance = user_info_ws.row_values(last_cell.row)[-1]
+                deposit_amount = deposit_amount + float(balance)
             print('\nProcessing deposit....')
             sleep(1.5)
             print('Approved✅\n')
@@ -126,7 +136,7 @@ def withdraw_money(amount):
                 print('\nPayment Declined❌')
                 sleep(1.2)
                 print(
-                    f'you have insufficient balance of £{amount} please withdraw £{amount} or less please\n')
+                    f'you have insufficient balance of £{amount} please withdraw £{amount} or less\n')
                 continue
 
             print('\nWithdrawal request processing...')
@@ -163,8 +173,8 @@ def main():
     '''
 
     user = enter_username()
-    check_user_existence(user)
-    added_amount = deposit_money()
+    check_user = check_user_existence(user)
+    added_amount = deposit_money(check_user)
     removed_amount = withdraw_money(added_amount)
     total_balance = view_balance(added_amount, removed_amount)
 
@@ -188,6 +198,7 @@ def main():
     # sleep(1.2)
     # print(
     #     f'User Information:\nUsername - {user}\nBalance - £{total_balance}')
+
 
     # total_balance =
     # while True:

@@ -74,12 +74,18 @@ def check_user_existence(username):
     if existing_user:
         last_cell = user_info_ws.findall(username, in_column=1)[-1]
         balance = user_info_ws.row_values(last_cell.row)[-1]
+        print('\nUser checking....')
+        sleep(1.5)
+        print('User found')
+        sleep(1.2)
         print(
-            f"\nWelcome {username}.. Your current account balance is: £{balance}")
+            f"\nWelcome back {username}.. Your current account balance is: £{balance}")
 
     else:
+        print('User checking....')
+        sleep(1.5)
         print(f"\nUsername not found\nCreating new user...")
-        sleep(1.2)
+        sleep(1.5)
         print(f'\nHello {username}, Thanx for joining MHA Bank')
     return username
 
@@ -101,7 +107,10 @@ def deposit_money(user):
             if existing_user:
                 last_cell = user_info_ws.findall(user, in_column=1)[-1]
                 balance = user_info_ws.row_values(last_cell.row)[-1]
-                deposit_amount = deposit_amount + float(balance)
+                update_balance = deposit_amount + float(balance)
+            else:
+                update_balance = 0
+                update_balance += deposit_amount
             print('\nProcessing deposit....')
             sleep(1.5)
             print('Approved✅\n')
@@ -111,7 +120,7 @@ def deposit_money(user):
         else:
             print('\nPlease enter a number')
             continue
-        return deposit_amount
+        return update_balance
 
 
 def withdraw_money(amount):
@@ -178,46 +187,9 @@ def main():
     removed_amount = withdraw_money(added_amount)
     total_balance = view_balance(added_amount, removed_amount)
 
-    # users = SHEET.worksheet("user_info").col_values(1)
-    # for username in users:
-    #     # index = 1
-    #     if  username == user:
-    #         SHEET.worksheet('user_info').row_values(user)
-    #         print('user found', user)
-    #         # user_row = index
-    #         break
-    #     else:
-    #         append_row_in_spreadsheet = [user, added_amount, removed_amount, total_balance]
-    #         SHEET.worksheet('user_info').append_row(append_row_in_spreadsheet)
-    #         # index =+ 1
-
-    # deposits = SHEET.worksheet("user_info").col_values(4)
-    # user_deposit = deposits[1]
-    # print(user_deposit)
-
-    # sleep(1.2)
-    # print(
-    #     f'User Information:\nUsername - {user}\nBalance - £{total_balance}')
+    append_rows_in_the_spreadsheet = [
+        user, added_amount, removed_amount, total_balance]
+    SHEET.worksheet('user_info').append_row(append_rows_in_the_spreadsheet)
 
 
-    # total_balance =
-    # while True:
-    #     sleep(1.5)
-    #     print('Please choose one of the following options: ')
-    #     print('\n1. Deposit Money\n2. Withdraw Money\n3. View Balance\n')
-    #     choose = input('Type here: ')
-    #     if choose == '1':
-    #         added_amount = deposit_money()
-    #         total_balance = total_balance + added_amount
-    #         print(f'your updated balance is £{total_balance}')
-    #     elif choose == '2':
-    #         removed_amount = withdraw_money(added_amount)
-    #         total_balance = total_balance - removed_amount
-    #         print(total_balance)
-    #     elif choose == '3':
-    #         view_balance(removed_amount)
-    #     elif choose == '':
-    #         print('please type a number')
-    #     else:
-    #         validate_data(choose)
 get_user_details()

@@ -25,7 +25,8 @@ def get_user_details():
     print(BANK_LOGO)
     print('Hello and welcome to MHA Bank🏦.\n')
 
-    input('Press any BUTTON to start...')
+    print('Press any BUTTON to start...')
+    input('')
     print('=========================================================================================')
     sleep(0.5)
     main()
@@ -79,7 +80,7 @@ def check_user_existence(username):
         print('User found')
         sleep(1.2)
         print(
-            f"\nWelcome back {username}.. Your current account balance is: £{balance}")
+            f"\nWelcome back {username}.. Your current account balance is: £{balance}\n")
 
     else:
         print('User checking....')
@@ -99,7 +100,7 @@ def deposit_money(user):
     while True:
 
         deposit_amount = input('How much would you like to deposit?\n£')
-        if deposit_amount.isdigit():
+        if deposit_amount.replace('.', '').isdigit():
             deposit_amount = float(deposit_amount)
             user_info_ws = SHEET.worksheet("user_info")
 
@@ -134,7 +135,7 @@ def withdraw_money(amount):
         if user_choice_of_withdraw == 'y' or user_choice_of_withdraw == 'yes':
             withdrawal_amount = input(
                 '\nHow much would you like to withdraw?\n£')
-            if withdrawal_amount.isdigit():
+            if withdrawal_amount.replace('.', '').isdigit():
                 withdrawal_amount = float(withdrawal_amount)
             else:
                 print('\nPlease enter a number\n')
@@ -145,7 +146,7 @@ def withdraw_money(amount):
                 print('\nPayment Declined❌')
                 sleep(1.2)
                 print(
-                    f'you have insufficient balance of £{amount} please withdraw £{amount} or less\n')
+                    f'You have insufficient balance of £{amount} please withdraw £{amount} or less\n')
                 continue
 
             print('\nWithdrawal request processing...')
@@ -156,7 +157,7 @@ def withdraw_money(amount):
                 f'You have taken £{withdrawal_amount} from your bank account\n')
         elif user_choice_of_withdraw == 'n' or user_choice_of_withdraw == 'no':
             withdrawal_amount = float(0)
-            print('\nprocessing...')
+            print('\nProcessing...')
             sleep(1.2)
             print('No money was withdrawn from your account\n')
         else:
@@ -190,6 +191,29 @@ def main():
     append_rows_in_the_spreadsheet = [
         user, added_amount, removed_amount, total_balance]
     SHEET.worksheet('user_info').append_row(append_rows_in_the_spreadsheet)
+
+    while True:
+        sleep(1.5)
+        print('Please choose one of the following options: ')
+        print('\n1. Deposit Money\n2. Withdraw Money\n3. View Balance\n4. Exit App\n')
+        choose = input('Type here: ')
+        if choose == '1':
+            deposit_money(check_user)
+        elif choose == '2':
+            removed_amount = withdraw_money(added_amount)
+        elif choose == '3':
+            total_balance = view_balance(added_amount, removed_amount)
+        elif choose == '':
+            print('Please type a number')
+        elif choose == '4':
+            print('Goodbye')
+            quit()
+        else:
+            validate_data(choose)
+
+        append_rows_in_the_spreadsheet = [
+            user, added_amount, removed_amount, total_balance]
+        SHEET.worksheet('user_info').append_row(append_rows_in_the_spreadsheet)
 
 
 get_user_details()

@@ -75,7 +75,7 @@ def check_user_existence(username):
     if existing_user:
         last_cell = user_info_ws.findall(username, in_column=1)[-1]
         balance = user_info_ws.row_values(last_cell.row)[-1]
-        print('\nUser checking....')
+        print('User checking....\n')
         sleep(1.5)
         print('User found')
         sleep(1.2)
@@ -109,6 +109,7 @@ def deposit_money(user):
                 last_cell = user_info_ws.findall(user, in_column=1)[-1]
                 balance = user_info_ws.row_values(last_cell.row)[-1]
                 update_balance = deposit_amount + float(balance)
+                balance = update_balance
             else:
                 update_balance = 0
                 update_balance += deposit_amount
@@ -121,7 +122,7 @@ def deposit_money(user):
         else:
             print('\nPlease enter a number')
             continue
-        return update_balance
+        return balance
 
 
 def withdraw_money(amount):
@@ -198,7 +199,7 @@ def main():
         print('\n1. Deposit Money\n2. Withdraw Money\n3. View Balance\n4. Exit App\n')
         choose = input('Type here: ')
         if choose == '1':
-            deposit_money(check_user)
+            added_amount = deposit_money(check_user)
         elif choose == '2':
             removed_amount = withdraw_money(added_amount)
         elif choose == '3':

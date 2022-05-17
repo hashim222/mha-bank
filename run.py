@@ -27,14 +27,16 @@ def get_user_details():
 
     print('Press any BUTTON to start...')
     input('')
-    print('=========================================================================================')
+    print('===================================================================\
+======================')
     sleep(0.5)
     main()
 
 
 def validate_data(user_typed):
     '''
-    Instead of breaking a program, this raises an error if the user doesn't follow along.
+    Instead of breaking a program, this raises an error if the user doesn't\
+    follow along.
     '''
 
     try:
@@ -48,18 +50,22 @@ def validate_data(user_typed):
 def enter_username():
     '''
     Stores username here.
-    Checks that the amount of characters the user enters do not exceed or fall below the amount given.    
+    Checks that the amount of characters the user enters do not exceed or fall\
+    below the amount given.
     '''
 
     while True:
         username = input(
-            "Create your username here, or enter your existing username if you are already a member.\nYour character should be between 5 and 10. \n").lower()
+            "Create your username here, or enter your existing username if you\
+ are already a member.\nYour character should be between 5 and 10. \n").lower()
 
         if len(username) > 10:
-            print('\nThe number of character should not exceed 10. Please try again.')
+            print('\nThe number of character should not exceed 10.\
+ Please try again.')
             continue
         elif len(username) < 5:
-            print('\nA minimum of five character is required. Please try again.')
+            print('\nA minimum of five character is required.\
+ Please try again.')
             continue
         return username
 
@@ -80,13 +86,14 @@ def check_user_existence(username):
         print('User found')
         sleep(1.2)
         print(
-            f"\nWelcome back {username}.. Your current account balance is: £{balance}\n")
+            f"\nWelcome back {username}..\
+ Your current account balance is: £{balance}\n")
 
         return username, float(balance)
     else:
         print('User checking....')
         sleep(1.5)
-        print(f"\nUsername not found\nCreating new user...")
+        print("Username not found\nCreating new user...")
         sleep(1.5)
         print(f'\nHello {username}, Thanx for joining MHA Bank')
         return username, 0
@@ -95,7 +102,8 @@ def check_user_existence(username):
 def deposit_money(user, balance):
     '''
     Adds user amount to the bank.
-    If user balance are found in the spreadsheet, the balance will be updated with the new balance.
+    If user balance are found in the spreadsheet, the balance will\
+    be updated with the new balance.
     '''
 
     while True:
@@ -113,7 +121,8 @@ def deposit_money(user, balance):
             print('Approved✅\n')
             sleep(1.2)
             print(
-                f'Your bank account has been credited with £{deposit_amount}\n')
+                f'Your bank account has been\
+ credited with £{deposit_amount}\n')
         else:
             print('\nPlease enter a number')
             continue
@@ -143,7 +152,8 @@ def withdraw_money(user, amount):
                 print('\nPayment Declined❌')
                 sleep(1.2)
                 print(
-                    f'You have insufficient balance of £{amount} please withdraw £{amount} or less\n')
+                    f'You have insufficient balance of £{amount}\
+ please withdraw £{amount} or less\n')
                 continue
 
             append_rows_in_the_spreadsheet = [
@@ -155,7 +165,7 @@ def withdraw_money(user, amount):
             print('Approved✅\n')
             sleep(1.2)
             print(
-                f'You have taken £{withdrawal_amount} from your bank account\n')
+                f'You have taken £{withdrawal_amount} from your bank account')
         elif user_choice_of_withdraw == 'n' or user_choice_of_withdraw == 'no':
             withdrawal_amount = float(0)
             print('\nProcessing...')
@@ -189,8 +199,9 @@ def main():
 
     while True:
         sleep(1.5)
-        print('Please choose one of the following options: ')
-        print('\n1. Deposit Money\n2. Withdraw Money\n3. View Balance\n4. Exit App\n')
+        print('\nPlease choose one of the following options: ')
+        print('\n1. Deposit Money\n2. Withdraw Money')
+        print('3. View Balance\n4. Exit App\n')
         choose = input('Type here: ')
         if choose == '1':
             added_amount = deposit_money(check_user, balance)

@@ -6,7 +6,7 @@
 MHA Bank is a simple Python terminal bank app that runs on the Code Institute's mock terminal Heroku.
 
 
-This is a very simple bank app. At the beginning, the app asks for a username. If the user already exists, their previous balance will be shown. If not, the app will create the username for them, and then asks them to deposit the amount. When they input their deposit amount, it will ask them if they want to withdraw. In the end, the app will show how much money the user has in his bank account
+This is a very simple bank app. in the beginning, the app asks for a username. If the user already exists, their previous balance will be shown. If not, the app creates a username for them, and then there are four options for them to choose from: deposit, withdraw, view balance, and exit bank.
 
 ## Live Preview
 

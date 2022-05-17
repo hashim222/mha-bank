@@ -82,16 +82,17 @@ def check_user_existence(username):
         print(
             f"\nWelcome back {username}.. Your current account balance is: £{balance}\n")
 
+        return username, float(balance)
     else:
         print('User checking....')
         sleep(1.5)
         print(f"\nUsername not found\nCreating new user...")
         sleep(1.5)
         print(f'\nHello {username}, Thanx for joining MHA Bank')
-    return username
+        return username, 0
 
 
-def deposit_money(user):
+def deposit_money(user, balance):
     '''
     Adds user amount to the bank.
     If user balance are found in the spreadsheet, the balance will be updated with the new balance.
@@ -102,17 +103,11 @@ def deposit_money(user):
         deposit_amount = input('How much would you like to deposit?\n£')
         if deposit_amount.replace('.', '').isdigit():
             deposit_amount = float(deposit_amount)
-            user_info_ws = SHEET.worksheet("user_info")
+            append_rows_in_the_spreadsheet = [
+                user, deposit_amount, '', balance + deposit_amount]
+            SHEET.worksheet('user_info').append_row(
+                append_rows_in_the_spreadsheet)
 
-            existing_user = user_info_ws.find(user, in_column=1)
-            if existing_user:
-                last_cell = user_info_ws.findall(user, in_column=1)[-1]
-                balance = user_info_ws.row_values(last_cell.row)[-1]
-                update_balance = deposit_amount + float(balance)
-                balance = update_balance
-            else:
-                update_balance = 0
-                update_balance += deposit_amount
             print('\nProcessing deposit....')
             sleep(1.5)
             print('Approved✅\n')
@@ -122,10 +117,11 @@ def deposit_money(user):
         else:
             print('\nPlease enter a number')
             continue
-        return balance
+
+        return deposit_amount
 
 
-def withdraw_money(amount):
+def withdraw_money(user, amount):
     '''
     Users inputs for withdrawl amount.
     '''
@@ -150,6 +146,10 @@ def withdraw_money(amount):
                     f'You have insufficient balance of £{amount} please withdraw £{amount} or less\n')
                 continue
 
+            append_rows_in_the_spreadsheet = [
+                user, '', withdrawal_amount, amount - withdrawal_amount]
+            SHEET.worksheet('user_info').append_row(
+                append_rows_in_the_spreadsheet)
             print('\nWithdrawal request processing...')
             sleep(1.5)
             print('Approved✅\n')
@@ -164,15 +164,16 @@ def withdraw_money(amount):
         else:
             print('\nYou can proceed to the next step by typing yes or no')
             continue
+
         return withdrawal_amount
 
 
-def view_balance(depo_amount, withd_amount):
+def view_balance(balance):
     '''
     Shows users to their total balance
     '''
 
-    get_total_amount = depo_amount - withd_amount
+    get_total_amount = balance
     print(f'You have an updated balance of £{get_total_amount}\n')
     return get_total_amount
 
@@ -184,14 +185,7 @@ def main():
     '''
 
     user = enter_username()
-    check_user = check_user_existence(user)
-    added_amount = deposit_money(check_user)
-    removed_amount = withdraw_money(added_amount)
-    total_balance = view_balance(added_amount, removed_amount)
-
-    append_rows_in_the_spreadsheet = [
-        user, added_amount, removed_amount, total_balance]
-    SHEET.worksheet('user_info').append_row(append_rows_in_the_spreadsheet)
+    check_user, balance = check_user_existence(user)
 
     while True:
         sleep(1.5)
@@ -199,11 +193,14 @@ def main():
         print('\n1. Deposit Money\n2. Withdraw Money\n3. View Balance\n4. Exit App\n')
         choose = input('Type here: ')
         if choose == '1':
-            added_amount = deposit_money(check_user)
+            added_amount = deposit_money(check_user, balance)
+            balance = balance + added_amount
         elif choose == '2':
-            removed_amount = withdraw_money(added_amount)
+            removed_amount = withdraw_money(check_user, balance)
+            balance = balance - removed_amount
+
         elif choose == '3':
-            total_balance = view_balance(added_amount, removed_amount)
+            balance = view_balance(balance)
         elif choose == '':
             print('Please type a number')
         elif choose == '4':
@@ -211,10 +208,6 @@ def main():
             quit()
         else:
             validate_data(choose)
-
-        append_rows_in_the_spreadsheet = [
-            user, added_amount, removed_amount, total_balance]
-        SHEET.worksheet('user_info').append_row(append_rows_in_the_spreadsheet)
 
 
 get_user_details()

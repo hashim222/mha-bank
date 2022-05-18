@@ -6,20 +6,21 @@
 MHA Bank is a simple Python terminal bank app that runs on the Code Institute's mock terminal Heroku.
 
 
-This is a very simple bank app. in the beginning, the app asks for a username. If the user already exists, their previous balance will be shown. If not, the app creates a username for them, and then there are four options for them to choose from: deposit, withdraw, view balance, and exit bank.
+MHA Bank stands for Muhammad Hashim Aslam Bank, which is very simple bank app.
+
+The app asks for a username at the beginning. If the user already exists, their previous balance will be shown. If not, the app creates a username for them, and then there are four options for them to choose from: deposit, withdraw, view balance, and exit bank.
 
 ## Live Preview
+Live preview for MHA Bank [Here](https://mha-bank.herokuapp.com/)
 
-## User Goals
-
-## Owner Goals
 
 ## Features 
 * ### Existing Features
 * ### Future Features
 
 ## Data Model
-
+* I used GoogleSheets to store the user's data, so every time the user makes a transaction, it is stored in the spreadsheet.
+![image for googlesheets that iused](/readme-images/googlesheet-image.png)
 ## Flowchart
 
 ## Testings
@@ -82,4 +83,5 @@ HOW TO DEPLOY
 After linking your app to your workspace with one of the above steps, you can then deploy new versions of the app by running the command git push heroku main and your app will be deployed to Heroku.</details>
 
 ## Credits
+
 ## Acknowledgment

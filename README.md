@@ -22,7 +22,11 @@ Live preview for MHA Bank [Here](https://mha-bank.herokuapp.com/)
 * I used GoogleSheets to store and retrieve the user's data. Each time the user deposits money or withdraws money, these transactions are stored in the spreadsheet.
 
 ![image for googlesheets that iused](/readme-images/googlesheet-image.png)
+
 ## Flowchart
+* Flowchart for the site
+
+![image for flochart for site](/readme-images/flowchart.png)
 
 ## Validator Testing
 
@@ -48,6 +52,7 @@ Live preview for MHA Bank [Here](https://mha-bank.herokuapp.com/)
     * [Github](https://github.com/)
     * [Gitpod workspace](https://gitpod.io/workspaces)
     * [Heroku](https://dashboard.heroku.com/apps)
+    * [Flowchart](https://lucid.app/documents#/documents?folder_id=home)
 
 ## Libraries Used
 
@@ -101,6 +106,9 @@ After linking your app to your workspace with one of the above steps, you can th
 
 * The idea of building a bank app with Python comes from a video on [youtube](https://www.youtube.com/watch?v=xTh-ln2XhgU).
 
+* The site flowchart was created by using [Lucid App](https://lucid.app/documents#/documents?folder_id=home).
+
 * By making this project I had plenty of help from the [Slack Community](https://slack.com/intl/en-gb/) and tutor supprot from Code Institute.
+
 ## Acknowledgment
 

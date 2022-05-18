@@ -19,31 +19,44 @@ Live preview for MHA Bank [Here](https://mha-bank.herokuapp.com/)
 * ### Future Features
 
 ## Data Model
-* I used GoogleSheets to store the user's data, so every time the user makes a transaction, it is stored in the spreadsheet.
+* I used GoogleSheets to store and retrieve the user's data. Each time the user deposits money or withdraws money, these transactions are stored in the spreadsheet.
+
 ![image for googlesheets that iused](/readme-images/googlesheet-image.png)
 ## Flowchart
 
-## Testings
+## Validator Testing
+
+* I confirmed that my code passes with no errors using the PEP8 online Python Validator. 
+
+![image for validator i used to check my project](/readme-images/python-validator.png)
 
 ## Bugs
 
+
 * ### Fixed Bugs
+    * The first time I made use of the validator, I got too many warnings for "long lines", as well as a "trailing space" warning. Eventually, I managed to fix all of those warnings.
 * ### Unfixed Bugs
-* ### Validator Testing
 
 ## Technologies Used
-* [Python](https://www.python.org/)
-* [googlesheets](https://www.google.co.uk/sheets/about/)
+* These are the technologies that were used to make this project.
+    * [Python](https://www.python.org/)
+    * [Googlesheets](https://www.google.co.uk/sheets/about/)
+    * [W3School](https://www.w3schools.com/)
+    * [MDN Web Docs](https://developer.mozilla.org/en-US/)
+    * [Stackoverflow](https://stackoverflow.com/)
+    * [Git](https://git-scm.com/)
+    * [Github](https://github.com/)
+    * [Gitpod workspace](https://gitpod.io/workspaces)
+    * [Heroku](https://dashboard.heroku.com/apps)
 
 ## Libraries Used
 
-* [gspread](https://docs.gspread.org/en/v3.7.0/api.html)
+* These are the Python modules/libraries used for this project.
 
-* [credentials](https://pypi.org/project/credentials/)
-
-* [pyfiglet](https://pypi.org/project/pyfiglet/0.7/)
-
-* [time/sleep](https://www.programiz.com/python-programming/time/sleep)
+    * [gspread](https://docs.gspread.org/en/v3.7.0/api.html)
+    * [credentials](https://pypi.org/project/credentials/)
+    * [pyfiglet](https://pypi.org/project/pyfiglet/0.7/)
+    * [time/sleep](https://www.programiz.com/python-programming/time/sleep)
 
 ## Deployments
 Git and GitHub are used for version control. Python is the backend language, and can't be displayed with GitHub alone, To live preview my project, I used Heroku.
@@ -84,4 +97,10 @@ After linking your app to your workspace with one of the above steps, you can th
 
 ## Credits
 
+* With help from the [Code Institute Love sandwich](https://github.com/Code-Institute-Solutions/love-sandwiches-p5-sourcecode) project, I created a function called validate_data() that handles errors.
+
+* The idea of building a bank app with Python comes from a video on [youtube](https://www.youtube.com/watch?v=xTh-ln2XhgU).
+
+* By making this project I had plenty of help from the [Slack Community](https://slack.com/intl/en-gb/) and tutor supprot from Code Institute.
 ## Acknowledgment
+

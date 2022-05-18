@@ -19,7 +19,7 @@ SHEET = GSPREAD_CLIENT.open('MHA_bank')
 def get_user_details():
     '''
     Takes all the user info.
-    Inside the function runs multiple functions inside
+    runs multiple functions inside.
     '''
     BANK_LOGO = pyfiglet.figlet_format('MHA  BANK')
     print(BANK_LOGO)
@@ -49,9 +49,8 @@ def validate_data(user_typed):
 
 def enter_username():
     '''
-    Stores username here.
-    Checks that the amount of characters the user enters do not exceed or fall\
-    below the amount given.
+    Here is where users enter their username.
+    Checks the characters entered by the user don't exceed or fall below.
     '''
 
     while True:
@@ -72,7 +71,9 @@ def enter_username():
 
 def check_user_existence(username):
     '''
-    Checks if user exists in the spreadsheet or not
+    This function checks whether a user exists in the spreadsheet.\
+    If the user already exists it will restore their previous balance,\
+    if not, it will create a user name for them.
     '''
 
     user_info_ws = SHEET.worksheet("user_info")
@@ -93,17 +94,17 @@ def check_user_existence(username):
     else:
         print('User checking....')
         sleep(1.5)
-        print("Username not found\nCreating new user...")
+        print("\nUsername not found\nCreating new user...")
         sleep(1.5)
         print(f'\nHello {username}, Thanx for joining MHA Bank')
         return username, 0
 
 
-def deposit_money(user, balance):
+def deposit(user, balance):
     '''
-    Adds user amount to the bank.
-    If user balance are found in the spreadsheet, the balance will\
-    be updated with the new balance.
+    Adds the user's amount to the bank.
+    A user deposit is saved in the spreadsheet and if their balance is\
+    found in the spreadsheet previously their balance gets updated
     '''
 
     while True:
@@ -130,9 +131,11 @@ def deposit_money(user, balance):
         return deposit_amount
 
 
-def withdraw_money(user, amount):
+def withdraw(user, amount):
     '''
-    Users inputs for withdrawl amount.
+    Withdrawal input for the user.
+    If there is enough money to withdraw, it will withdraw it for the user and\
+    store it in the spreadsheet.
     '''
 
     while True:
@@ -180,7 +183,7 @@ def withdraw_money(user, amount):
 
 def view_balance(balance):
     '''
-    Shows users to their total balance
+    Display the total balance of users
     '''
 
     get_total_amount = balance
@@ -190,8 +193,8 @@ def view_balance(balance):
 
 def main():
     '''
-    User multiple choices inside.
-    Runs multiple function.
+    Provides users with multiple choices.
+    Performs multiple functions inside.
     '''
 
     user = enter_username()
@@ -200,25 +203,26 @@ def main():
     while True:
         sleep(1.5)
         print('\nPlease choose one of the following options: ')
-        print('\n1. Deposit Money\n2. Withdraw Money')
-        print('3. View Balance\n4. Exit App\n')
+        sleep(1.2)
+        print('\n1. Deposit⬆️\n2. Withdraw🔻')
+        print('3. View Balance🪟\n4. Exit App👋\n')
         choose = input('Type here: ')
         if choose == '1':
-            added_amount = deposit_money(check_user, balance)
+            added_amount = deposit(check_user, balance)
             balance = balance + added_amount
         elif choose == '2':
-            removed_amount = withdraw_money(check_user, balance)
+            removed_amount = withdraw(check_user, balance)
             balance = balance - removed_amount
-
         elif choose == '3':
             balance = view_balance(balance)
         elif choose == '':
             print('Please type a number')
         elif choose == '4':
-            print('Goodbye')
+            print(f'\nSee you soon, {user}👋\n')
             quit()
         else:
             validate_data(choose)
 
 
-get_user_details()
+if __name__ == "__main__":
+    get_user_details()

@@ -25,10 +25,10 @@ def get_user_details():
     print(BANK_LOGO)
     print('Hello and welcome to MHA Bank🏦.\n')
 
-    print('Press any BUTTON to start...')
+    print('Press ENTER to start...')
     input('')
     print('===================================================================\
-======================')
+=======')
     sleep(0.5)
     main()
 

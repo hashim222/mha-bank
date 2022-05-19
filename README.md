@@ -16,6 +16,26 @@ Live preview for MHA Bank [Here](https://mha-bank.herokuapp.com/)
 
 ## Features 
 * ### Existing Features
+    * As soon as users open the app, they will see the logo for "MHA Bank" which i created using [pyfiglet module](https://pypi.org/project/pyfiglet/0.7/).
+
+    * Users can start by typing anything they want and then pressing "Enter" or just simply press "Enter" to start.
+
+    * Users will be asked to enter your previous username if you are an existing user. If not, create a new user by typing. However, the character should not be less than 5 or exceed 10.
+
+    * If user is found the message will show up which says "user found" and their previous balance will shown.
+
+    * If user is not found the message will show up which says "user not found" and  "creating new user..."
+
+    * There are four options to choose from. The user will be asked to choose one of the following options. If the user types anything other than the given number, it will ask the user to try again. 
+
+    * When the user chooses option 1 "Deposit," they will be asked to deposit money.   
+    If the user already exists, the previous account balance will be updated, and if the user is newly created, the account and balance will be saved.
+
+    * When the user selects option 2 'withdraw', they will be asked if they would like to withdraw money by pressing yes or no.  
+    if user press no they will be taken back to option section.  
+    When the user presses yes, they will be asked how much they would like to withdraw, and they can withdraw by typing the amount.    
+    Whenever users withdraw more than their total balance, their transaction will be declined, and they will be notified that their account balance is insufficient.
+
 * ### Future Features
 
 ## Data Model
@@ -108,7 +128,7 @@ After linking your app to your workspace with one of the above steps, you can th
 
 * The site flowchart was created by using [Lucid App](https://lucid.app/documents#/documents?folder_id=home).
 
-* By making this project I had plenty of help from the [Slack Community](https://slack.com/intl/en-gb/) and tutor supprot from Code Institute.
+* By making this project I had plenty of help from the [Slack Community](https://slack.com/intl/en-gb/) and tutor support from Code Institute.
 
 ## Acknowledgment
 

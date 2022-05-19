@@ -16,27 +16,42 @@ Live preview for MHA Bank [Here](https://mha-bank.herokuapp.com/)
 
 ## Features 
 * ### Existing Features
+
+    These are the features were added for users experience.
+
     * As soon as users open the app, they will see the logo for "MHA Bank" which i created using [pyfiglet module](https://pypi.org/project/pyfiglet/0.7/).
 
-    * Users can start by typing anything they want and then pressing "Enter" or just simply press "Enter" to start.
+    * User can start the app by typing anything in the input field and then pressing "Enter" or just simply press "Enter" to start.
 
-    * Users will be asked to enter your previous username if you are an existing user. If not, create a new user by typing. However, the character should not be less than 5 or exceed 10.
+    * Users will be asked to enter your previous username if you are an existing user. If not, create a new username by typing. However, the character should not be less than 5 or exceed 10.
 
-    * If user is found the message will show up which says "user found" and their previous balance will shown.
+    * If user is found, the message will show up which says "user found" and their previous balance will shown.
 
-    * If user is not found the message will show up which says "user not found" and  "creating new user..."
+    * If user is not found, the message will show up which says "user not found" and  "creating new user..."
 
-    * There are four options to choose from. The user will be asked to choose one of the following options. If the user types anything other than the given number, it will ask the user to try again. 
+    * There are four options for users to choose from, If the user types anything other than the given number, it will ask the user to try again. 
 
     * When the user chooses option 1 "Deposit," they will be asked to deposit money.   
-    If the user already exists, the previous account balance will be updated, and if the user is newly created, the account and balance will be saved.
+    If the user already exists, their previous account balance will be updated and if the user is newly created, their details and balance will be saved.
 
-    * When the user selects option 2 'withdraw', they will be asked if they would like to withdraw money by pressing yes or no.  
-    if user press no they will be taken back to option section.  
+    * When the user selects option 2 "Withdraw", they will be asked if they would like to withdraw money by pressing yes or no.  
+    if user press no they will be taken back to options section.  
     When the user presses yes, they will be asked how much they would like to withdraw, and they can withdraw by typing the amount.    
     Whenever users withdraw more than their total balance, their transaction will be declined, and they will be notified that their account balance is insufficient.
 
+    * Users can view their balance by selecting option 3 "View Balance".  
+    If a user is new and has not deposited any funds yet, their balance will be £0.
+
+    * Users can exit the app by pressing option 4 "Exit App"  
+
 * ### Future Features
+    In the future, these are the feathers I would like to add.
+
+    * I would like to add a strict username and password. If the username or password doesn't match, they can't login.
+
+    * Keep track of user transactions and display their previous transactions. 
+
+    * I would like to create a transfer money option, where one user can send money to another user.
 
 ## Data Model
 * I used GoogleSheets to store and retrieve the user's data. Each time the user deposits money or withdraws money, these transactions are stored in the spreadsheet.

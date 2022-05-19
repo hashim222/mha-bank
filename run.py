@@ -28,7 +28,7 @@ def get_user_details():
     print('Press ENTER to start...')
     input('')
     print('===================================================================\
-=======')
+=======\n')
     sleep(0.5)
     main()
 
@@ -187,7 +187,7 @@ def view_balance(balance):
     '''
 
     get_total_amount = balance
-    print(f'You have an updated balance of £{get_total_amount}\n')
+    print(f'\nYou have an updated balance of £{get_total_amount}\n')
     return get_total_amount
 
 

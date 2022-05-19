@@ -11,43 +11,67 @@ MHA Bank stands for Muhammad Hashim Aslam Bank, which is very simple bank app.
 The app asks for a username at the beginning. If the user already exists, their previous balance will be shown. If not, the app creates a username for them, and then there are four options for them to choose from: deposit, withdraw, view balance, and exit bank.
 
 ## Live Preview
+
 Live preview for MHA Bank [Here](https://mha-bank.herokuapp.com/)
 
+   ![MHA Bank site view](/readme-images/site-live-preview.png)
 
 ## Features 
+
 * ### Existing Features
 
     These are the features were added for users experience.
 
     * As soon as users open the app, they will see the logo for "MHA Bank" which i created using [pyfiglet module](https://pypi.org/project/pyfiglet/0.7/).
 
-    * User can start the app by typing anything in the input field and then pressing "Enter" or just simply press "Enter" to start.
+    * User can start the app by typing anything in the input field and then by pressing "Enter" or just simply press "Enter" to start.
 
-    * Users will be asked to enter your previous username if you are an existing user. If not, create a new username by typing. However, the character should not be less than 5 or exceed 10.
+        ![MHA Bank site logo](/readme-images/site-logo.png)
+
+    * Users will be asked to enter their username. If they are existing users, just simply input their previous username. If they are new users, they can enter their new username to continue, but the character must not be less than 5 or greater than 10
 
     * If user is found, the message will show up which says "user found" and their previous balance will shown.
 
+        ![image for "user found" text](/readme-images/user-found.png)
+
     * If user is not found, the message will show up which says "user not found" and  "creating new user..."
 
+        ![image for "user not found" text](/readme-images/user-not-found.png)
+
     * There are four options for users to choose from, If the user types anything other than the given number, it will ask the user to try again. 
+        
+        ![image for user "options" to choose from](/readme-images/user-option.png)
 
     * When the user chooses option 1 "Deposit," they will be asked to deposit money.   
-    If the user already exists, their previous account balance will be updated and if the user is newly created, their details and balance will be saved.
+      If the user already exists, their previous account balance will be updated and if the user is newly created, their details and balance will be saved.
 
-    * When the user selects option 2 "Withdraw", they will be asked if they would like to withdraw money by pressing yes or no.  
-    if user press no they will be taken back to options section.  
-    When the user presses yes, they will be asked how much they would like to withdraw, and they can withdraw by typing the amount.    
-    Whenever users withdraw more than their total balance, their transaction will be declined, and they will be notified that their account balance is insufficient.
+        ![image for user "deposit"](/readme-images/user-deposit.png)
+
+    * When the user selects option 2 "Withdraw", they will be asked if they would like to withdraw money by choosing one of the option, yes or no. 
+      If user press no they will be taken back to options section.  
+      If user presses yes, they will be asked how much they would like to withdraw, and they can withdraw by typing the amount. 
+
+        ![image for user "withdraw"](/readme-images/withdraw-money.png)
+         
+    * if user tried to withdraw more than their total balance, their transaction will be declined, and they will be notified that their account balance is insufficient.
+
+        ![image for user "withdraw"](/readme-images/card-declined.png)
+
 
     * Users can view their balance by selecting option 3 "View Balance".  
-    If a user is new and has not deposited any funds yet, their balance will be £0.
+      If a user is new and has not deposited any funds yet, their balance will be £0.
 
-    * Users can exit the app by pressing option 4 "Exit App"  
+        ![image for user "view balance"](/readme-images/view-balance.png)
+
+    * Users can exit the app by pressing option 4 "Exit App" 
+
+        ![image for user "exit app"](/readme-images/exit-app.png)
+ 
 
 * ### Future Features
     In the future, these are the feathers I would like to add.
 
-    * I would like to add a strict username and password. If the username or password doesn't match, they can't login.
+    * I would like to add a strict username and password fucntion. If the username or password doesn't match, users won't be able to log in.
 
     * Keep track of user transactions and display their previous transactions. 
 
@@ -56,18 +80,19 @@ Live preview for MHA Bank [Here](https://mha-bank.herokuapp.com/)
 ## Data Model
 * I used GoogleSheets to store and retrieve the user's data. Each time the user deposits money or withdraws money, these transactions are stored in the spreadsheet.
 
-![image for googlesheets that iused](/readme-images/googlesheet-image.png)
+    ![image for googlesheets that i used](/readme-images/googlesheet-image.png)
 
 ## Flowchart
+
 * Flowchart for the site
 
-![image for flochart for site](/readme-images/flowchart.png)
+    ![image for flochart for site](/readme-images/flowchart.png)
 
 ## Validator Testing
 
 * I confirmed that my code passes with no errors using the PEP8 online Python Validator. 
 
-![image for validator i used to check my project](/readme-images/python-validator.png)
+    ![image for validator i used to check my project](/readme-images/python-validator.png)
 
 ## Bugs
 

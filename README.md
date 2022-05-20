@@ -103,6 +103,11 @@ Live preview for MHA Bank [Here](https://mha-bank.herokuapp.com/)
 
 * ### Fixed Bugs
     * The first time I made use of the validator, I got too many warnings for "long lines", as well as a "trailing space" warning. Eventually, I managed to fix all of those warnings.
+
+    * Furthermore, I found out that the user could not input dots, so whenever the user tried to input a ".", for example, when the user tried to input £10.50, the program would not let him deposit or withdraw money. so I used the replace('.', '') function to fix the issue.
+
+    ![image for bug occuerd i used to check my project](/readme-images/bug-fixed.png)
+
 * ### Unfixed Bugs
 
 ## Technologies Used
@@ -179,4 +184,4 @@ After linking your app to your workspace with one of the above steps, you can th
 * By making this project I had plenty of help from the [Slack Community](https://slack.com/intl/en-gb/) and tutor support from Code Institute.
 
 ## Acknowledgment
-* Through this project, Sandeep Aggarwal has been an excellent mentor to me, and I am grateful for his guidance. Also, I want to thank my family members, who all checked out the finished project to see if it worked well and if I could improve it.
+* Throughout this project, Sandeep Aggarwal has been an excellent mentor to me, and I am grateful for his guidance. Also, I want to thank my family members, who all checked out the finished project to see if it worked well and if I could improve it.

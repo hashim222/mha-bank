@@ -1,6 +1,9 @@
+# Python API for Google spreadsheets.
 import gspread
 from google.oauth2.service_account import Credentials
+# Created a logo for app using pyfiglet.
 import pyfiglet
+# I've added sleep to delay my functions.
 from time import sleep
 
 
@@ -18,7 +21,7 @@ SHEET = GSPREAD_CLIENT.open('MHA_bank')
 
 def get_user_details():
     '''
-    Takes all the user info.
+    Takes all the user information.
     runs multiple functions inside.
     '''
     BANK_LOGO = pyfiglet.figlet_format('MHA  BANK')
@@ -76,11 +79,16 @@ def check_user_existence(username):
     if not, it will create a user name for them.
     '''
 
+    # Google Spreadsheet
     user_info_ws = SHEET.worksheet("user_info")
 
     existing_user = user_info_ws.find(username, in_column=1)
     if existing_user:
+
+        # Gets username from the spreadsheet
         last_cell = user_info_ws.findall(username, in_column=1)[-1]
+
+        # Gets user previus balance from the spreadsheet
         balance = user_info_ws.row_values(last_cell.row)[-1]
         print('User checking....\n')
         sleep(1.5)
@@ -112,6 +120,8 @@ def deposit(user, balance):
         deposit_amount = input('How much would you like to deposit?\n£')
         if deposit_amount.replace('.', '').isdigit():
             deposit_amount = float(deposit_amount)
+
+            # Adds user deposits amount inside the spreadsheet
             append_rows_in_the_spreadsheet = [
                 user, deposit_amount, '', balance + deposit_amount]
             SHEET.worksheet('user_info').append_row(
@@ -159,10 +169,12 @@ def withdraw(user, amount):
  please withdraw £{amount} or less\n')
                 continue
 
+            # Adds user Withdrawal amount inside the spreadsheet
             append_rows_in_the_spreadsheet = [
                 user, '', withdrawal_amount, amount - withdrawal_amount]
             SHEET.worksheet('user_info').append_row(
                 append_rows_in_the_spreadsheet)
+
             print('\nWithdrawal request processing...')
             sleep(1.5)
             print('Approved✅\n')

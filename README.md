@@ -3,10 +3,10 @@
 
 
 ## Introduction
-MHA Bank is a simple Python terminal bank app that runs on the Code Institute's mock terminal Heroku.
+MHA Bank is a Python terminal bank app that runs on the Code Institute's mock terminal Heroku.
 
 
-MHA Bank stands for Muhammad Hashim Aslam Bank, which is very simple bank app.
+MHA Bank stands for Muhammad Hashim Aslam Bank, which is simple bank app.
 
 The app asks for a username at the beginning. If the user already exists, their previous balance will be shown. If not, the app creates a username for them, and then there are four options for them to choose from: deposit, withdraw, view balance, and exit bank.
 
@@ -42,13 +42,16 @@ Live preview for MHA Bank [Here](https://mha-bank.herokuapp.com/)
         
         ![image for user "options" to choose from](/readme-images/user-option.png)
 
-    * When the user chooses option 1 "Deposit," they will be asked to deposit money.   
-      If the user already exists, their previous account balance will be updated and if the user is newly created, their details and balance will be saved.
+    * When the user chooses option 1 "Deposit," they will be asked to deposit money.  
+
+        Upon depositing, existing users will have their previous account balance updated, and a newly created user will have their details and balance saved.
 
         ![image for user "deposit"](/readme-images/user-deposit.png)
 
     * When the user selects option 2 "Withdraw", they will be asked if they would like to withdraw money by choosing one of the option, yes or no. 
-      If user press no they will be taken back to options section.  
+
+      If user press no they will be taken back to options section. 
+
       If user presses yes, they will be asked how much they would like to withdraw, and they can withdraw by typing the amount. 
 
         ![image for user "withdraw"](/readme-images/withdraw-money.png)
@@ -58,7 +61,8 @@ Live preview for MHA Bank [Here](https://mha-bank.herokuapp.com/)
         ![image for user "withdraw"](/readme-images/card-declined.png)
 
 
-    * Users can view their balance by selecting option 3 "View Balance".  
+    * Users can view their balance by selecting option 3 "View Balance".
+
       If a user is new and has not deposited any funds yet, their balance will be £0.
 
         ![image for user "view balance"](/readme-images/view-balance.png)
@@ -125,10 +129,6 @@ Live preview for MHA Bank [Here](https://mha-bank.herokuapp.com/)
 
 ## Deployments
 Git and GitHub are used for version control. Python is the backend language, and can't be displayed with GitHub alone, To live preview my project, I used Heroku.
-* ### Github
-    * Clone the project
-        * In order to clone this project, the user must locate the repository Code button on the [MHA-Bank](https://github.com/hashim222/mha-bank) and select either download zip or open with Github Desktop. 
-        * A user can copy and paste the link into their git terminal by clicking GitHub CLI and the Copy button in the Code Dropdown menu.
 
 * ### Heroku
     * Deployment steps on Heroku. 
@@ -160,6 +160,14 @@ Once you have followed the appropriate step above, your Heroku app will be linke
 HOW TO DEPLOY
 After linking your app to your workspace with one of the above steps, you can then deploy new versions of the app by running the command git push heroku main and your app will be deployed to Heroku.</details>
 
+
+
+* ### Github
+    * Clone the project
+        * In order to clone this project, the user must locate the repository Code button on the [MHA-Bank](https://github.com/hashim222/mha-bank) and select either download zip or open with Github Desktop. 
+        * A user can copy and paste the link into their git terminal by clicking GitHub CLI and the Copy button in the Code Dropdown menu.
+
+
 ## Credits
 
 * With help from the [Code Institute Love sandwich](https://github.com/Code-Institute-Solutions/love-sandwiches-p5-sourcecode) project, I created a function called validate_data() that handles errors.
@@ -171,4 +179,4 @@ After linking your app to your workspace with one of the above steps, you can th
 * By making this project I had plenty of help from the [Slack Community](https://slack.com/intl/en-gb/) and tutor support from Code Institute.
 
 ## Acknowledgment
-
+* Through this project, Sandeep Aggarwal has been an excellent mentor to me, and I am grateful for his guidance. Also, I want to thank my family members, who all checked out the finished project to see if it worked well and if I could improve it.

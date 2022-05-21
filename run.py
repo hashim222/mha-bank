@@ -19,7 +19,13 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open("MHA_bank")
 
 
-def delay_print(message):
+def delay_print_message(message):
+    '''
+    End minutes were created before submitting.
+    To delay functions, I had to repeat the sleep function
+    multiple times, so I created this to reduce the code
+    so that I don't have to repeat it multiple times.
+    '''
     print(message)
     sleep(1.4)
 
@@ -31,9 +37,9 @@ def user_welcome_text():
     BANK_LOGO = pyfiglet.figlet_format("MHA  BANK")
     print(BANK_LOGO)
     print("Hello and welcome to MHA Bank🏦.\n")
-    delay_print("Press ENTER to start...")
+    delay_print_message("Press ENTER to start...")
     input("")
-    delay_print(
+    delay_print_message(
         "==================================================================="
         "=======\n"
     )
@@ -63,7 +69,7 @@ def enter_username():
 
     while True:
         username = input(
-            "Create your username here, or enter your existing"
+            "Create your username here, or enter your existing "
             "username if you are already a member."
             "\nYour character should be between 5 and 10. \n"
         ).lower()
@@ -99,16 +105,16 @@ def check_user_existence(username):
 
         # Gets user previus balance from the spreadsheet
         balance = user_info_ws.row_values(last_cell.row)[-1]
-        delay_print("User checking....\n")
-        delay_print("User found")
-        delay_print(
+        delay_print_message("User checking....\n")
+        delay_print_message("User found")
+        delay_print_message(
             f"\nWelcome back {username}.. "
             f"Your current account balance is: £{float(balance):.2f}\n"
         )
 
         return username, float(balance)
     else:
-        delay_print("User checking....")
+        delay_print_message("User checking....")
         print("\nUsername not found\n" "Creating new user...")
         sleep(1.4)
         print(f"\nHello {username}, Thanx for joining MHA Bank")
@@ -138,9 +144,9 @@ def deposit(user, balance):
             SHEET.worksheet("user_info").append_row(
                 append_rows_in_the_spreadsheet)
 
-            delay_print("\nProcessing deposit....")
-            delay_print("Approved✅\n")
-            delay_print(
+            delay_print_message("\nProcessing deposit....")
+            delay_print_message("Approved✅\n")
+            delay_print_message(
                 f"Your bank account has been "
                 f"credited with £{deposit_amount:.2f}\n"
             )
@@ -171,8 +177,8 @@ def withdraw(user, amount):
             if withdrawal_amount > amount:
 
                 sleep(1.4)
-                delay_print("\nPayment Declined❌")
-                delay_print(
+                delay_print_message("\nPayment Declined❌")
+                delay_print_message(
                     f"You have insufficient balance of £{amount:.2f} "
                     f"please withdraw £{amount:.2f} or less\n"
                 )
@@ -187,14 +193,14 @@ def withdraw(user, amount):
             SHEET.worksheet("user_info").append_row(
                 append_rows_in_the_spreadsheet)
 
-            delay_print("\nWithdrawal request processing...")
-            delay_print("Approved✅\n")
-            delay_print(
+            delay_print_message("\nWithdrawal request processing...")
+            delay_print_message("Approved✅\n")
+            delay_print_message(
                 f"You have taken £{withdrawal_amount} from your bank account")
         elif user_choice_of_withdraw == "n" or user_choice_of_withdraw == "no":
             withdrawal_amount = float(0)
             print("\nProcessing...")
-            delay_print("No money was withdrawn from your account\n")
+            delay_print_message("No money was withdrawn from your account\n")
         else:
             print("\nYou can proceed to the next step by typing yes or no.")
             continue
@@ -222,7 +228,7 @@ def main():
     check_user, balance = check_user_existence(user)
 
     while True:
-        delay_print("\nPlease choose one of the following options: ")
+        delay_print_message("\nPlease choose one of the following options: ")
 
         print(
             "\n1. Deposit⬆️\n"

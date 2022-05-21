@@ -82,7 +82,9 @@ Live preview for MHA Bank [Here](https://mha-bank.herokuapp.com/)
     * I would like to create a transfer money option, where one user can send money to another user.
 
 ## Data Model
-* I used GoogleSheets to store and retrieve the user's data. Each time the user deposits money or withdraws money, these transactions are stored in the spreadsheet.
+* I used GoogleSheets to store and retrieve the user's data. Every time a user deposits money or withdraws money, this information is stored in the spreadsheet.
+
+* All these are done, on one page of the spreadsheet. It would be nice to add transactions on different pages of a spreadsheet in the future, which would give me more options with user transactions. 
 
     ![image for googlesheets that i used](/readme-images/googlesheet-image.png)
 
@@ -91,6 +93,11 @@ Live preview for MHA Bank [Here](https://mha-bank.herokuapp.com/)
 * Flowchart for the site
 
     ![image for flochart for site](/readme-images/flowchart.png)
+
+## User Input Testings
+This project has been manually tested multiple times.
+
+Invalid data is handled well when it is input by the user.
 
 ## Validator Testing
 
@@ -107,6 +114,10 @@ Live preview for MHA Bank [Here](https://mha-bank.herokuapp.com/)
     * Furthermore, I found out that the user could not input dots, so whenever the user tried to input a ".", for example, when the user tried to input £10.50, the program would not let him deposit or withdraw money. so I used the replace('.', '') function to fix the issue.
 
     ![image for bug occuerd i used to check my project](/readme-images/bug-fixed.png)
+
+    * Even though the code was reviewed, no one spotted another issue until I ran the program multiple times. In the deposit section, when I tried to do "1.2.3" the program crashed, so I was relieved to find that, and I fixed it by adding replace('.', '', 1) to the code.
+
+    ![image for bug occuerd issue 2 used to check my project](/readme-images/fixed-issue-2.png)
 
 * ### Unfixed Bugs
 

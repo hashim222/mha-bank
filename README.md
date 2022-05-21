@@ -97,7 +97,23 @@ Live preview for MHA Bank [Here](https://mha-bank.herokuapp.com/)
 ## User Input Testings
 This project has been manually tested multiple times.
 
-Invalid data is handled well when it is input by the user.
+Invalid data is handled well when it is input by the user. A few examples: 
+
+* The user will be prompted "only to input integers" if they try to put a letter in "Choose option".
+
+    ![image for input intger only](/readme-images/invalid-data.png)
+
+* If the user types a number that doesn't match the numbers provided, a message will appear that says "your value does not match with given values".
+
+    ![image for invalid number](/readme-images/invalid-number.png)
+
+* When a user tries to enter a letter, not a number in the "deposit" or "withdrawal" input, they will see a message that says "Please enter a number"
+
+    ![image for enter number only](/readme-images/enter-number.png)
+
+* If users input a floating-point number as their deposit or withdrawal amount, for example, £1000.18282882, their total amount will be rounded down to £1000.18.
+
+    ![image for round down numbers](/readme-images/round-down.png)
 
 ## Validator Testing
 

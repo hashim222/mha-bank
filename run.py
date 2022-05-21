@@ -196,7 +196,8 @@ def withdraw(user, amount):
             delay_print_message("\nWithdrawal request processing...")
             delay_print_message("Approved✅\n")
             delay_print_message(
-                f"You have taken £{withdrawal_amount} from your bank account")
+                f"You have taken £{withdrawal_amount:.2f}"
+                "from your bank account")
         elif user_choice_of_withdraw == "n" or user_choice_of_withdraw == "no":
             withdrawal_amount = float(0)
             print("\nProcessing...")

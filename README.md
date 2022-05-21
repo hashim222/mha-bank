@@ -6,9 +6,9 @@
 MHA Bank is a Python terminal bank app that runs on the Code Institute's mock terminal Heroku.
 
 
-MHA Bank stands for Muhammad Hashim Aslam Bank, which is simple bank app.
+MHA Bank stands for Muhammad Hashim Aslam Bank, which is a simple bank app.
 
-The app asks for a username at the beginning. If the user already exists, their previous balance will be shown. If not, the app creates a username for them, and then there are four options for them to choose from: deposit, withdraw, view balance, and exit bank.
+In the beginning, the app asks for a username, If the user already exists, their previous balance will be shown. If not, the app creates a username for them, and then there are four options for them to choose from: deposit, withdraw, view balance, and exit app.
 
 ## Live Preview
 
@@ -20,13 +20,15 @@ Live preview for MHA Bank [Here](https://mha-bank.herokuapp.com/)
 
 * ### Existing Features
 
-    These are the features were added for users experience.
+    These are the features that were added for users experience.
 
     * As soon as users open the app, they will see the logo for "MHA Bank" which i created using [pyfiglet module](https://pypi.org/project/pyfiglet/0.7/).
 
-    * User can start the app by typing anything in the input field and then by pressing "Enter" or just simply press "Enter" to start.
+    * User can start the app by typing anything in the input field and then by pressing "Enter" or just simply pressing "Enter" to start.
 
         ![MHA Bank site logo](/readme-images/site-logo.png)
+
+    **USERNAME**
 
     * Users will be asked to enter their username. If they are existing users, just simply input their previous username. If they are new users, they can enter their new username to continue, but the character must not be less than 5 or greater than 10
 
@@ -38,9 +40,13 @@ Live preview for MHA Bank [Here](https://mha-bank.herokuapp.com/)
 
         ![image for "user not found" text](/readme-images/user-not-found.png)
 
+    **OPTIONS TO CHOOSE FROM**
+
     * There are four options for users to choose from, If the user types anything other than the given number, it will ask the user to try again. 
         
         ![image for user "options" to choose from](/readme-images/user-option.png)
+
+    **DEPOSIT**
 
     * When the user chooses option 1 "Deposit," they will be asked to deposit money.  
 
@@ -48,11 +54,13 @@ Live preview for MHA Bank [Here](https://mha-bank.herokuapp.com/)
 
         ![image for user "deposit"](/readme-images/user-deposit.png)
 
+    **WITHDARW**    
+
     * When the user selects option 2 "Withdraw", they will be asked if they would like to withdraw money by choosing one of the option, yes or no. 
 
-      If user press no they will be taken back to options section. 
+      If user input no they will be taken back to options section. 
 
-      If user presses yes, they will be asked how much they would like to withdraw, and they can withdraw by typing the amount. 
+      If user input yes, they will be asked how much they would like to withdraw, and they can withdraw by typing the amount. 
 
         ![image for user "withdraw"](/readme-images/withdraw-money.png)
          
@@ -61,11 +69,15 @@ Live preview for MHA Bank [Here](https://mha-bank.herokuapp.com/)
         ![image for user "withdraw"](/readme-images/card-declined.png)
 
 
+    **VIEW BALANCE**
+
     * Users can view their balance by selecting option 3 "View Balance".
 
       If a user is new and has not deposited any funds yet, their balance will be £0.
 
         ![image for user "view balance"](/readme-images/view-balance.png)
+
+    **EXIT APP**
 
     * Users can exit the app by pressing option 4 "Exit App" 
 
@@ -127,11 +139,11 @@ Invalid data is handled well when it is input by the user. A few examples:
 * ### Fixed Bugs
     * The first time I made use of the validator, I got too many warnings for "long lines", as well as a "trailing space" warning. Eventually, I managed to fix all of those warnings.
 
-    * Furthermore, I found out that the user could not input dots, so whenever the user tried to input a ".", for example, when the user tried to input £10.50, the program would not let him deposit or withdraw money. so I used the replace('.', '') function to fix the issue.
+    * Furthermore, I found out that the user could not input dots, so whenever the user tried to input a ".", for example, when the user tried to input £10.50, the program would not let the user deposit or withdraw money. so I used the replace('.', '') function to fix the issue.
 
     ![image for bug occuerd i used to check my project](/readme-images/bug-fixed.png)
 
-    * Even though the code was reviewed, no one spotted another issue until I ran the program multiple times. In the deposit section, when I tried to do "1.2.3" the program crashed, so I was relieved to find that, and I fixed it by adding replace('.', '', 1) to the code.
+    * Even though the code was reviewed, no one spotted another issue until I ran the program multiple times. In the deposit section, when I tried to do "1.2.3" the program crashed, so I was relieved to find that since this was one day before submitting my project, and I fixed it by adding replace('.', '', 1) to the code.
 
     ![image for bug occuerd issue 2 used to check my project](/readme-images/fixed-issue-2.png)
 
